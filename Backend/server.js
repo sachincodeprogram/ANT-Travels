@@ -18,6 +18,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:5175",
   "https://ant-travels.vercel.app",
+  "https://ant-travels-two.vercel.app",
 ];
 
 app.use(cors({
