@@ -141,9 +141,18 @@ const VehicleList = () => {
   const [profile, setProfile]         = useState(null);
 
   useEffect(() => {
+    console.log("🔍 API URL:", API);
+    console.log("🔍 Full URL:", `${API}/vehicles`);
     axios.get(`${API}/vehicles`)
-      .then((res) => setVehicles(res.data?.data || []))
-      .catch(() => toast.error("Failed to load vehicles"))
+      .then((res) => {
+        console.log("✅ Vehicles response:", res.data);
+        setVehicles(res.data?.data || []);
+      })
+      .catch((err) => {
+        console.error("❌ Vehicles error:", err.message);
+        console.error("❌ Error details:", err.response?.status, err.response?.data);
+        toast.error("Failed to load vehicles");
+      })
       .finally(() => setLoading(false));
   }, []);
 
