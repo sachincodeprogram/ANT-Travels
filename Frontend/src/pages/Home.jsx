@@ -232,7 +232,7 @@ const Home = () => {
     }
     setNoService(false);
     setJourney({ from, to, startDate, endDate });
-    toast.success(`Journey saved! Now book your vehicle ðŸš—`);
+    toast.success(`Journey saved! Now book your vehicle 🚗`);
     navigate("/vehicles");
   };
 
@@ -474,7 +474,7 @@ const Home = () => {
           {[
             { value: "500+", label: "Vehicles" },
             { value: "10K+", label: "Happy Trips" },
-            { value: "4.8â˜…", label: "Avg Rating" },
+            { value: "4.8★", label: "Avg Rating" },
             { value: "24/7", label: "Support" },
           ].map(({ value, label }) => (
             <div key={label} style={{ textAlign: "center", minWidth: "70px" }}>
@@ -491,9 +491,9 @@ const Home = () => {
 
       {/* â•â• VEHICLE SECTIONS â•â• */}
       <div className="container" style={{ paddingBottom: "60px" }}>
-        <Section icon="ðŸš—" label="Cars"     data={cars}      loading={loading} navigate={navigate} />
-        <Section icon="ðŸš" label="Mini Bus" data={minibuses} loading={loading} navigate={navigate} />
-        <Section icon="ðŸšŒ" label="Bus"      data={buses}     loading={loading} navigate={navigate} />
+        <Section icon="🚗" label="Cars"     data={cars}      loading={loading} navigate={navigate} />
+        <Section icon="🚐" label="Mini Bus" data={minibuses} loading={loading} navigate={navigate} />
+        <Section icon="🚌" label="Bus"      data={buses}     loading={loading} navigate={navigate} />
       </div>
 
       {/* â•â• WHY CHOOSE US â•â• */}
