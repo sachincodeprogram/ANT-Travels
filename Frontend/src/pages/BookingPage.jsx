@@ -46,7 +46,7 @@ const Booking = () => {
   return (
     <div className="container mt-5 text-center">
       <h2>{vehicle.name}</h2>
-      <p>â‚¹{vehicle.pricePerKm}/km</p>
+      <p>₹{vehicle.pricePerKm}/km</p>
 
       <button className="btn btn-dark" onClick={handlePayment}>
         Pay Now

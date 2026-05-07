@@ -161,7 +161,7 @@ const VehicleDetail = () => {
               </div>
               <div style={{ textAlign: "right" }}>
                 <div style={{ fontSize: "clamp(28px,5vw,42px)", fontWeight: 900, color: "#fff", lineHeight: 1 }}>
-                  â‚¹{vehicle.pricePerKm}
+                  ₹{vehicle.pricePerKm}
                 </div>
                 <div style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>per km</div>
               </div>
@@ -237,7 +237,7 @@ const VehicleDetail = () => {
                   <div style={{ fontWeight: 700, color: "#f59e0b", fontSize: 13 }}>Journey not set</div>
                   <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>
                     Go to Home and select pickup, drop & dates first.
-                    {" "}<span style={{ color: "#3b82f6", cursor: "pointer", fontWeight: 600 }} onClick={() => navigate("/")}>Set Journey â†’</span>
+                    {" "}<span style={{ color: "#3b82f6", cursor: "pointer", fontWeight: 600 }} onClick={() => navigate("/")}>Set Journey →</span>
                   </div>
                 </div>
               </div>
@@ -252,14 +252,14 @@ const VehicleDetail = () => {
                 <div>
                   <div style={{ fontWeight: 700, color: "#10b981", fontSize: 13 }}>Journey Ready</div>
                   <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>
-                    {journey.from} â†’ {journey.to} Â· {journey.startDate}
+                    {journey.from} → {journey.to} · {journey.startDate}
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* â”€â”€ Right Column â€” Booking Card â”€â”€ */}
+          {/* â”€â”€ Right Column — Booking Card â”€â”€ */}
           <div className="col-lg-5">
             <div style={{
               background: "var(--bg-card)", border: "1px solid var(--border-color)",
@@ -269,10 +269,10 @@ const VehicleDetail = () => {
               <h5 style={{ fontWeight: 800, color: "var(--text-primary)", marginBottom: 18 }}>Fare Estimate</h5>
 
               {[
-                { label: "Rate",          value: `â‚¹${vehicle.pricePerKm}/km` },
+                { label: "Rate",          value: `₹${vehicle.pricePerKm}/km` },
                 { label: "Est. Distance", value: "~100 km" },
-                { label: "Est. Total",    value: `â‚¹${(vehicle.pricePerKm * 100).toLocaleString()}` },
-                { label: "5% Advance",    value: `â‚¹${Math.ceil(vehicle.pricePerKm * 100 * 0.05).toLocaleString()}` },
+                { label: "Est. Total",    value: `₹${(vehicle.pricePerKm * 100).toLocaleString()}` },
+                { label: "5% Advance",    value: `₹${Math.ceil(vehicle.pricePerKm * 100 * 0.05).toLocaleString()}` },
               ].map(({ label, value }) => (
                 <div key={label} style={{
                   display: "flex", justifyContent: "space-between",
@@ -296,7 +296,7 @@ const VehicleDetail = () => {
                 className="btn-gradient"
                 style={{ width: "100%", padding: "15px", fontSize: 16, borderRadius: 14 }}
               >
-                Book This Vehicle â†’
+                Book This Vehicle →
               </button>
 
               <div style={{ display: "flex", justifyContent: "center", gap: 18, marginTop: 16 }}>

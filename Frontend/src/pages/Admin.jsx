@@ -54,7 +54,7 @@ const AllBookings = () => {
       const bList = Array.isArray(bRes.data) ? bRes.data : [];
       const uList = Array.isArray(uRes.data) ? uRes.data : [];
       setBookings(bList);
-      // uid â†’ profile map
+      // uid → profile map
       const map = {};
       uList.forEach((u) => { map[u.uid] = u; });
       setUserMap(map);
@@ -73,7 +73,7 @@ const AllBookings = () => {
       <div className="row g-3 mb-4">
         {[
           { label: "Total Bookings",   value: bookings.length,                                              color: "#3b82f6" },
-          { label: "Revenue Collected",value: `â‚¹${totalRevenue.toLocaleString()}`,                         color: "#10b981" },
+          { label: "Revenue Collected",value: `₹${totalRevenue.toLocaleString()}`,                         color: "#10b981" },
           { label: "Advance Bookings", value: bookings.filter(b => b.paymentType === "advance").length,     color: "#f59e0b" },
           { label: "Full Payments",    value: bookings.filter(b => b.paymentType === "full").length,        color: "#8b5cf6" },
           { label: "Pay Later",        value: bookings.filter(b => b.paymentType === "later").length,       color: "#06b6d4" },
@@ -161,7 +161,7 @@ const AllBookings = () => {
                           </span>
                         </div>
                       ) : (
-                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>â€”</span>
+                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>—</span>
                       )}
                     </td>
 
@@ -175,7 +175,7 @@ const AllBookings = () => {
                           </span>
                         </div>
                       ) : (
-                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>â€”</span>
+                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>—</span>
                       )}
                     </td>
 
@@ -188,7 +188,7 @@ const AllBookings = () => {
                     {/* Route */}
                     <td style={{ padding: "12px 14px", minWidth: "130px" }}>
                       <div style={{ color: "var(--text-primary)", fontWeight: "600" }}>
-                        {b.from} â†’ {b.to}
+                        {b.from} → {b.to}
                       </div>
                     </td>
 
@@ -214,16 +214,16 @@ const AllBookings = () => {
                     {/* Amount */}
                     <td style={{ padding: "12px 14px", minWidth: "100px" }}>
                       <div style={{ fontWeight: "700", color: "var(--text-primary)" }}>
-                        â‚¹{(b.advanceAmount || 0).toLocaleString()}
+                        ₹{(b.advanceAmount || 0).toLocaleString()}
                       </div>
                       {b.paymentType === "advance" && (
                         <div style={{ fontSize: "11px", color: "#f59e0b" }}>
-                          Due: â‚¹{((b.totalAmount || 0) - (b.advanceAmount || 0)).toLocaleString()}
+                          Due: ₹{((b.totalAmount || 0) - (b.advanceAmount || 0)).toLocaleString()}
                         </div>
                       )}
                       {b.paymentType === "later" && (
                         <div style={{ fontSize: "11px", color: "#06b6d4" }}>
-                          Total: â‚¹{(b.totalAmount || 0).toLocaleString()}
+                          Total: ₹{(b.totalAmount || 0).toLocaleString()}
                         </div>
                       )}
                     </td>
@@ -311,7 +311,7 @@ const AllUsers = () => {
                     />
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontWeight: "700", color: "var(--text-primary)", fontSize: "14px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {u.name || "â€”"}
+                        {u.name || "—"}
                       </div>
                       <div style={{ fontSize: "11px", color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                         {u.email}
@@ -398,7 +398,7 @@ const VehicleForm = ({ initial = EMPTY, onSave, onCancel, saving, isEdit }) => {
 
         {/* Price */}
         <div className="col-md-4">
-          <label style={labelStyle}>Price (â‚¹/km) *</label>
+          <label style={labelStyle}>Price (₹/km) *</label>
           <input type="number" value={data.pricePerKm} onChange={(e) => set("pricePerKm", e.target.value)}
             placeholder="12" required style={inputStyle}
             onFocus={(e) => (e.target.style.borderColor = "#3b82f6")}
@@ -643,7 +643,7 @@ const ManageVehicles = () => {
                         </div>
                       </div>
                       <div style={{ fontWeight: "800", color: "#3b82f6", fontSize: "16px", flexShrink: 0 }}>
-                        â‚¹{v.pricePerKm}/km
+                        ₹{v.pricePerKm}/km
                       </div>
                     </div>
 

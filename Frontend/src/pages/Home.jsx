@@ -267,7 +267,7 @@ const Home = () => {
           </button>
         </div>
 
-        {/* Overlay text â€” sits on top of carousel */}
+        {/* Overlay text — sits on top of carousel */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom, rgba(6,8,20,0.38) 0%, rgba(6,8,20,0.65) 55%, rgba(6,8,20,0.88) 100%)",

@@ -89,7 +89,7 @@ const Booking = () => {
         amount:      order.amount,
         currency:    "INR",
         name:        "ANT Travels",
-        description: `${vehicle.name} â€” ${type === "advance" ? "5% Advance" : "Full Payment"}`,
+        description: `${vehicle.name} — ${type === "advance" ? "5% Advance" : "Full Payment"}`,
         order_id:    order.id,
         prefill: {
           name:  user?.displayName || "",
@@ -197,7 +197,7 @@ const Booking = () => {
                   </span>
                 </div>
                 <p style={{ color: "var(--text-muted)", margin: 0, fontSize: "13px" }}>
-                  AC â€¢ Comfortable â€¢ Professional Driver
+                  AC • Comfortable • Professional Driver
                 </p>
               </div>
             </div>
@@ -266,10 +266,10 @@ const Booking = () => {
                 Price Breakdown
               </h6>
 
-              {row("Rate", `â‚¹${vehicle.pricePerKm}/km`)}
+              {row("Rate", `₹${vehicle.pricePerKm}/km`)}
               {row("Est. Distance", `~${EST_KM} km`)}
-              {row("Est. Total", `â‚¹${totalAmount.toLocaleString()}`)}
-              {row("5% Advance", `â‚¹${advanceAmount.toLocaleString()}`)}
+              {row("Est. Total", `₹${totalAmount.toLocaleString()}`)}
+              {row("5% Advance", `₹${advanceAmount.toLocaleString()}`)}
 
               <p style={{
                 fontSize: "11px", color: "var(--text-muted)", margin: "12px 0 20px",
@@ -306,10 +306,10 @@ const Booking = () => {
                 </div>
                 <div style={{ textAlign: "left" }}>
                   <div style={{ fontWeight: "700", fontSize: "14px" }}>
-                    Pay 5% Advance â€” â‚¹{advanceAmount.toLocaleString()}
+                    Pay 5% Advance — ₹{advanceAmount.toLocaleString()}
                   </div>
                   <div style={{ fontSize: "11px", opacity: 0.85 }}>
-                    Rest â‚¹{(totalAmount - advanceAmount).toLocaleString()} on arrival
+                    Rest ₹{(totalAmount - advanceAmount).toLocaleString()} on arrival
                   </div>
                 </div>
               </button>
@@ -341,7 +341,7 @@ const Booking = () => {
                 </div>
                 <div style={{ textAlign: "left" }}>
                   <div style={{ fontWeight: "700", fontSize: "14px" }}>
-                    Full Payment â€” â‚¹{totalAmount.toLocaleString()}
+                    Full Payment — ₹{totalAmount.toLocaleString()}
                   </div>
                   <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>
                     Pay complete amount now
@@ -386,7 +386,7 @@ const Booking = () => {
                     Confirm Now, Pay Later
                   </div>
                   <div style={{ fontSize: "11px", opacity: 0.8 }}>
-                    No payment needed â€” pay full amount on arrival
+                    No payment needed — pay full amount on arrival
                   </div>
                 </div>
               </button>

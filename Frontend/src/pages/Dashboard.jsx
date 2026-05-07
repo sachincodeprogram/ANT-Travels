@@ -69,7 +69,7 @@ const BookingCard = ({ b }) => {
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px", flexWrap: "wrap" }}>
               <MdLocationOn size={14} color="#3b82f6" />
               <span style={{ fontWeight: "600", color: "var(--text-primary)", fontSize: "14px" }}>{b.from}</span>
-              <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>â†’</span>
+              <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>→</span>
               <span style={{ fontWeight: "600", color: "var(--text-primary)", fontSize: "14px" }}>{b.to}</span>
             </div>
 
@@ -79,7 +79,7 @@ const BookingCard = ({ b }) => {
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                   <MdCalendarToday size={12} color="var(--text-muted)" />
                   <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>
-                    {b.startDate}{b.endDate ? ` â†’ ${b.endDate}` : ""}
+                    {b.startDate}{b.endDate ? ` → ${b.endDate}` : ""}
                   </span>
                 </div>
               )}
@@ -98,18 +98,18 @@ const BookingCard = ({ b }) => {
                   {b.paymentType === "advance" ? "5% Advance Paid" : "Full Payment"}
                 </span>
                 <span style={{ fontWeight: "700", color: "var(--text-primary)", fontSize: "13px" }}>
-                  â‚¹{b.advanceAmount?.toLocaleString()}
+                  ₹{b.advanceAmount?.toLocaleString()}
                 </span>
               </div>
               {remaining > 0 && (
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                   <span style={{ fontSize: "12px", color: "#f59e0b" }}>
-                    Due on arrival: â‚¹{remaining.toLocaleString()}
+                    Due on arrival: ₹{remaining.toLocaleString()}
                   </span>
                 </div>
               )}
               <div style={{ marginLeft: "auto", fontSize: "12px", color: "var(--text-muted)" }}>
-                Total est. â‚¹{b.totalAmount?.toLocaleString()}
+                Total est. ₹{b.totalAmount?.toLocaleString()}
               </div>
             </div>
 

@@ -118,7 +118,7 @@ const Profile = () => {
           </div>
           <div>
             <div style={{ fontWeight: "700", color: isComplete ? "#10b981" : "#f59e0b", fontSize: "14px" }}>
-              {isComplete ? "Profile Complete â€” Ready to Book!" : "Profile Incomplete"}
+              {isComplete ? "Profile Complete — Ready to Book!" : "Profile Incomplete"}
             </div>
             <div style={{ fontSize: "12px", color: "var(--text-muted)", marginTop: "2px" }}>
               {isComplete
@@ -229,7 +229,7 @@ const Profile = () => {
                       cursor: "pointer",
                     }}
                   >
-                    Browse Vehicles â†’
+                    Browse Vehicles →
                   </button>
                 </div>
               ) : (

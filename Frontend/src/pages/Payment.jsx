@@ -29,7 +29,7 @@ const Payment = ({ amount, onSuccess }) => {
 
   return (
     <button className="btn btn-warning mt-3" onClick={handlePayment}>
-      Pay â‚¹{amount}
+      Pay ₹{amount}
     </button>
   );
 };
