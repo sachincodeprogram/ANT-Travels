@@ -13,21 +13,14 @@ import userRoutes    from "./routes/userRoutes.js";
 const app = express();
 
 // CORS
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
-  "https://ant-travels.vercel.app",
-  "https://ant-travels-two.vercel.app",
-];
-
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
+    if (!origin) return callback(null, true);
+    const allowed =
+      origin.startsWith("http://localhost") ||
+      /https:\/\/ant-travels[a-z0-9\-]*\.vercel\.app/.test(origin) ||
+      /https:\/\/[a-z0-9\-]+-sachins-projects-[a-z0-9]+\.vercel\.app/.test(origin);
+    allowed ? callback(null, true) : callback(new Error("Not allowed by CORS"));
   },
   credentials: true,
 }));
