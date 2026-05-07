@@ -88,11 +88,11 @@ const VehicleCard = ({ v, navigate }) => (
           {v.name}
         </h6>
         <p style={{ fontSize: "11px", color: "var(--text-muted)", margin: "0 0 10px" }}>
-          AC â€¢ Comfortable Ride
+          AC • Comfortable Ride
         </p>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <span style={{ fontSize: "17px", fontWeight: "800", color: "#3b82f6" }}>â‚¹{v.pricePerKm}</span>
+            <span style={{ fontSize: "17px", fontWeight: "800", color: "#3b82f6" }}>₹{v.pricePerKm}</span>
             <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>/km</span>
           </div>
           <span style={{
@@ -143,7 +143,7 @@ const Section = ({ icon, label, data, loading, navigate }) => {
           onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(59,130,246,0.08)"; e.currentTarget.style.borderColor = "#3b82f6"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--border-color)"; }}
         >
-          View All â†’
+          View All Vehicles
         </button>
       </div>
       {loading ? (
@@ -298,7 +298,7 @@ const Home = () => {
             </span>
           </h1>
           <p style={{ color: "#94a3b8", fontSize: "clamp(13px, 1.8vw, 16px)", maxWidth: "440px", margin: 0 }}>
-            Cars, Mini Buses & Buses â€” safe, affordable, on-time across India.
+            Cars, Mini Buses & Buses — safe, affordable, on-time across India.
           </p>
         </div>
       </div>
@@ -536,7 +536,7 @@ const Home = () => {
             cursor: "pointer", boxShadow: "0 8px 28px rgba(59,130,246,0.4)",
           }}
         >
-          Browse All Vehicles â†’
+          Browse All Vehicles
         </button>
       </div>
 

@@ -272,10 +272,10 @@ const VehicleList = () => {
   };
 
   const tabs = [
-    { key: "all",     label: "All Vehicles" },
-    { key: "car",     label: "Cars" },
-    { key: "minibus", label: "Mini Bus" },
-    { key: "bus",     label: "Bus" },
+    { key: "all",     label: "All Vehicles", emoji: "🚘" },
+    { key: "car",     label: "Cars",         emoji: "🚗" },
+    { key: "minibus", label: "Mini Bus",      emoji: "🚐" },
+    { key: "bus",     label: "Bus",           emoji: "🚌" },
   ];
 
   const cars      = vehicles.filter((v) => norm(v.type) === "car");
@@ -398,13 +398,15 @@ const VehicleList = () => {
                   : "var(--bg-card)",
                 color: activeTab === tab.key ? "#fff" : "var(--text-muted)",
                 border: `1px solid ${activeTab === tab.key ? "transparent" : "var(--border-color)"}`,
-                padding: "9px 24px", borderRadius: 25,
+                padding: "9px 22px", borderRadius: 25,
                 fontWeight: 700, cursor: "pointer", fontSize: 13,
                 boxShadow: activeTab === tab.key ? "0 6px 18px rgba(59,130,246,0.35)" : "none",
                 transition: "all 0.2s",
                 fontFamily: "Poppins, sans-serif",
+                display: "flex", alignItems: "center", gap: 7,
               }}
             >
+              <span style={{ fontSize: 16 }}>{tab.emoji}</span>
               {tab.label}
             </button>
           ))}
