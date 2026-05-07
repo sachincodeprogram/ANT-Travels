@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -6,7 +6,7 @@ import { auth } from "../firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import { FiUser, FiPhone, FiMapPin, FiCheck, FiEdit2 } from "react-icons/fi";
 
-const API = import.meta.env.VITE_API || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API || "https://ant-travels-4c1n.onrender.com/api";
 
 const inputStyle = {
   background: "var(--bg-primary)",
@@ -118,7 +118,7 @@ const Profile = () => {
           </div>
           <div>
             <div style={{ fontWeight: "700", color: isComplete ? "#10b981" : "#f59e0b", fontSize: "14px" }}>
-              {isComplete ? "Profile Complete — Ready to Book!" : "Profile Incomplete"}
+              {isComplete ? "Profile Complete â€” Ready to Book!" : "Profile Incomplete"}
             </div>
             <div style={{ fontSize: "12px", color: "var(--text-muted)", marginTop: "2px" }}>
               {isComplete
@@ -145,7 +145,7 @@ const Profile = () => {
 
         <div className="row g-4">
 
-          {/* ── Left: Firebase Info (read-only) ── */}
+          {/* â”€â”€ Left: Firebase Info (read-only) â”€â”€ */}
           <div className="col-md-5">
             <div style={{
               background: "var(--bg-card)", border: "1px solid var(--border-color)",
@@ -186,7 +186,7 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* ── Right: Edit Form ── */}
+          {/* â”€â”€ Right: Edit Form â”€â”€ */}
           <div className="col-md-7">
             <div style={{
               background: "var(--bg-card)", border: "1px solid var(--border-color)",
@@ -229,7 +229,7 @@ const Profile = () => {
                       cursor: "pointer",
                     }}
                   >
-                    Browse Vehicles →
+                    Browse Vehicles â†’
                   </button>
                 </div>
               ) : (
@@ -313,3 +313,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,12 +9,12 @@ import { FiInfo, FiArrowRight } from "react-icons/fi";
 import { auth } from "../firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 
-const API  = import.meta.env.VITE_API || "http://localhost:5000/api";
+const API  = import.meta.env.VITE_API || "https://ant-travels-4c1n.onrender.com/api";
 const norm = (t) => t?.toLowerCase().trim().replace(/\s+/g, "");
 
-/* ─── Vehicle Card ─── */
+/* â”€â”€â”€ Vehicle Card â”€â”€â”€ */
 const VehicleCard = ({ v, onDetailsClick, onBookClick, journey }) => {
-  const typeIcon = v.type === "car" ? "🚗" : v.type === "minibus" ? "🚐" : "🚌";
+  const typeIcon = v.type === "car" ? "ðŸš—" : v.type === "minibus" ? "ðŸš" : "ðŸšŒ";
 
   return (
     <div className="col-6 col-md-4 col-lg-3 d-flex">
@@ -46,7 +46,7 @@ const VehicleCard = ({ v, onDetailsClick, onBookClick, journey }) => {
             </span>
             {v.ac !== false && (
               <span style={{ background: "rgba(6,182,212,0.85)", backdropFilter: "blur(8px)", color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 20 }}>
-                ❄️
+                â„ï¸
               </span>
             )}
           </div>
@@ -58,14 +58,14 @@ const VehicleCard = ({ v, onDetailsClick, onBookClick, journey }) => {
             {v.name}
           </h6>
           <p style={{ fontSize: 11, color: "var(--text-muted)", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
-            {v.seats > 0 && <><MdAirlineSeatReclineNormal size={12} /> {v.seats} Seats •</>}
+            {v.seats > 0 && <><MdAirlineSeatReclineNormal size={12} /> {v.seats} Seats â€¢</>}
             {v.ac !== false ? <><MdAcUnit size={12} /> AC</> : "Non-AC"}
           </p>
 
           <div style={{ marginTop: "auto" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <div>
-                <span style={{ fontSize: 20, fontWeight: 900, color: "#3b82f6" }}>₹{v.pricePerKm}</span>
+                <span style={{ fontSize: 20, fontWeight: 900, color: "#3b82f6" }}>â‚¹{v.pricePerKm}</span>
                 <span style={{ fontSize: 11, color: "var(--text-muted)" }}>/km</span>
               </div>
             </div>
@@ -102,7 +102,7 @@ const VehicleCard = ({ v, onDetailsClick, onBookClick, journey }) => {
   );
 };
 
-/* ─── Section ─── */
+/* â”€â”€â”€ Section â”€â”€â”€ */
 const Section = ({ icon, label, data, loading, journey, onBookClick, onDetailsClick }) => {
   if (!loading && data.length === 0) return null;
   return (
@@ -130,7 +130,7 @@ const Section = ({ icon, label, data, loading, journey, onBookClick, onDetailsCl
   );
 };
 
-/* ══ Main ══ */
+/* â•â• Main â•â• */
 const VehicleList = () => {
   const navigate = useNavigate();
   const { journey } = useBooking();
@@ -141,16 +141,16 @@ const VehicleList = () => {
   const [profile, setProfile]         = useState(null);
 
   useEffect(() => {
-    console.log("🔍 API URL:", API);
-    console.log("🔍 Full URL:", `${API}/vehicles`);
+    console.log("ðŸ” API URL:", API);
+    console.log("ðŸ” Full URL:", `${API}/vehicles`);
     axios.get(`${API}/vehicles`)
       .then((res) => {
-        console.log("✅ Vehicles response:", res.data);
+        console.log("âœ… Vehicles response:", res.data);
         setVehicles(res.data?.data || []);
       })
       .catch((err) => {
-        console.error("❌ Vehicles error:", err.message);
-        console.error("❌ Error details:", err.response?.status, err.response?.data);
+        console.error("âŒ Vehicles error:", err.message);
+        console.error("âŒ Error details:", err.response?.status, err.response?.data);
         toast.error("Failed to load vehicles");
       })
       .finally(() => setLoading(false));
@@ -172,17 +172,17 @@ const VehicleList = () => {
   const handleDetailsClick = (vehicle) => navigate(`/vehicles/${vehicle._id}`);
 
   const handleBookClick = (vehicle) => {
-    if (!currentUser) { toast.error("Please login first!", { icon: "🔐" }); navigate("/login"); return; }
-    if (!journey)     { toast.error("Select journey details first!", { icon: "🗺️" }); navigate("/"); return; }
-    if (!profile?.phone || !profile?.address) { toast.error("Complete your profile first!", { icon: "👤" }); navigate("/profile"); return; }
+    if (!currentUser) { toast.error("Please login first!", { icon: "ðŸ”" }); navigate("/login"); return; }
+    if (!journey)     { toast.error("Select journey details first!", { icon: "ðŸ—ºï¸" }); navigate("/"); return; }
+    if (!profile?.phone || !profile?.address) { toast.error("Complete your profile first!", { icon: "ðŸ‘¤" }); navigate("/profile"); return; }
     navigate(`/booking/${vehicle._id}`, { state: { vehicle, journey } });
   };
 
   const tabs = [
-    { key: "all",     label: "All Vehicles", icon: "🚘" },
-    { key: "car",     label: "Cars",         icon: "🚗" },
-    { key: "minibus", label: "Mini Bus",      icon: "🚐" },
-    { key: "bus",     label: "Bus",           icon: "🚌" },
+    { key: "all",     label: "All Vehicles", icon: "ðŸš˜" },
+    { key: "car",     label: "Cars",         icon: "ðŸš—" },
+    { key: "minibus", label: "Mini Bus",      icon: "ðŸš" },
+    { key: "bus",     label: "Bus",           icon: "ðŸšŒ" },
   ];
 
   const cars      = vehicles.filter((v) => norm(v.type) === "car");
@@ -190,16 +190,16 @@ const VehicleList = () => {
   const buses     = vehicles.filter((v) => norm(v.type) === "bus");
 
   const allSections = [
-    { key: "car",     icon: "🚗", label: "Cars",     data: cars },
-    { key: "minibus", icon: "🚐", label: "Mini Bus",  data: minibuses },
-    { key: "bus",     icon: "🚌", label: "Bus",       data: buses },
+    { key: "car",     icon: "ðŸš—", label: "Cars",     data: cars },
+    { key: "minibus", icon: "ðŸš", label: "Mini Bus",  data: minibuses },
+    { key: "bus",     icon: "ðŸšŒ", label: "Bus",       data: buses },
   ];
   const visibleSections = activeTab === "all" ? allSections : allSections.filter((s) => s.key === activeTab);
 
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg-primary)" }}>
 
-      {/* ── Hero Banner ── */}
+      {/* â”€â”€ Hero Banner â”€â”€ */}
       <div style={{
         background: "linear-gradient(135deg,#060818 0%,#0d1a3a 60%,#060c20 100%)",
         padding: "56px 20px 72px", textAlign: "center", position: "relative", overflow: "hidden",
@@ -228,13 +228,13 @@ const VehicleList = () => {
           }}>
             <MdLocationOn color="#10b981" size={18} />
             <span style={{ fontWeight: 700, color: "var(--text-primary)", fontSize: 14 }}>{journey.from}</span>
-            <span style={{ color: "var(--text-muted)" }}>→</span>
+            <span style={{ color: "var(--text-muted)" }}>â†’</span>
             <span style={{ fontWeight: 700, color: "var(--text-primary)", fontSize: 14 }}>{journey.to}</span>
             <span style={{ color: "var(--text-muted)", fontSize: 12, display: "flex", alignItems: "center", gap: 4 }}>
-              <MdCalendarToday size={12} /> {journey.startDate}{journey.endDate ? ` → ${journey.endDate}` : ""}
+              <MdCalendarToday size={12} /> {journey.startDate}{journey.endDate ? ` â†’ ${journey.endDate}` : ""}
             </span>
             <span style={{ marginLeft: "auto", background: "#10b981", color: "#fff", fontSize: 11, fontWeight: 700, padding: "3px 12px", borderRadius: 20 }}>
-              ✓ Journey Set
+              âœ“ Journey Set
             </span>
           </div>
         ) : (
@@ -283,3 +283,4 @@ const VehicleList = () => {
 };
 
 export default VehicleList;
+

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { FiCreditCard, FiPercent, FiPlus, FiList, FiUsers, FiPhone, FiMapPin, FiCheck, FiAlertCircle, FiEdit2, FiTrash2, FiX, FiSave } from "react-icons/fi";
 import { MdDirectionsCar } from "react-icons/md";
 
-const API = import.meta.env.VITE_API || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API || "https://ant-travels-4c1n.onrender.com/api";
 
 const inputStyle = {
   background: "var(--bg-primary)",
@@ -39,7 +39,7 @@ const Th = ({ children }) => (
   </th>
 );
 
-/* ─── All Bookings Tab ─── */
+/* â”€â”€â”€ All Bookings Tab â”€â”€â”€ */
 const AllBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [userMap, setUserMap]   = useState({});
@@ -54,7 +54,7 @@ const AllBookings = () => {
       const bList = Array.isArray(bRes.data) ? bRes.data : [];
       const uList = Array.isArray(uRes.data) ? uRes.data : [];
       setBookings(bList);
-      // uid → profile map
+      // uid â†’ profile map
       const map = {};
       uList.forEach((u) => { map[u.uid] = u; });
       setUserMap(map);
@@ -73,7 +73,7 @@ const AllBookings = () => {
       <div className="row g-3 mb-4">
         {[
           { label: "Total Bookings",   value: bookings.length,                                              color: "#3b82f6" },
-          { label: "Revenue Collected",value: `₹${totalRevenue.toLocaleString()}`,                         color: "#10b981" },
+          { label: "Revenue Collected",value: `â‚¹${totalRevenue.toLocaleString()}`,                         color: "#10b981" },
           { label: "Advance Bookings", value: bookings.filter(b => b.paymentType === "advance").length,     color: "#f59e0b" },
           { label: "Full Payments",    value: bookings.filter(b => b.paymentType === "full").length,        color: "#8b5cf6" },
           { label: "Pay Later",        value: bookings.filter(b => b.paymentType === "later").length,       color: "#06b6d4" },
@@ -114,7 +114,7 @@ const AllBookings = () => {
         <div style={{ textAlign: "center", padding: "40px", color: "var(--text-muted)" }}>Loading...</div>
       ) : filtered.length === 0 ? (
         <div style={{ textAlign: "center", padding: "60px 0" }}>
-          <div style={{ fontSize: "48px" }}>📋</div>
+          <div style={{ fontSize: "48px" }}>ðŸ“‹</div>
           <p style={{ color: "var(--text-muted)", marginTop: "12px" }}>No bookings found</p>
         </div>
       ) : (
@@ -161,7 +161,7 @@ const AllBookings = () => {
                           </span>
                         </div>
                       ) : (
-                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>—</span>
+                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>â€”</span>
                       )}
                     </td>
 
@@ -175,7 +175,7 @@ const AllBookings = () => {
                           </span>
                         </div>
                       ) : (
-                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>—</span>
+                        <span style={{ fontSize: "11px", color: "#94a3b8", fontStyle: "italic" }}>â€”</span>
                       )}
                     </td>
 
@@ -188,7 +188,7 @@ const AllBookings = () => {
                     {/* Route */}
                     <td style={{ padding: "12px 14px", minWidth: "130px" }}>
                       <div style={{ color: "var(--text-primary)", fontWeight: "600" }}>
-                        {b.from} → {b.to}
+                        {b.from} â†’ {b.to}
                       </div>
                     </td>
 
@@ -214,16 +214,16 @@ const AllBookings = () => {
                     {/* Amount */}
                     <td style={{ padding: "12px 14px", minWidth: "100px" }}>
                       <div style={{ fontWeight: "700", color: "var(--text-primary)" }}>
-                        ₹{(b.advanceAmount || 0).toLocaleString()}
+                        â‚¹{(b.advanceAmount || 0).toLocaleString()}
                       </div>
                       {b.paymentType === "advance" && (
                         <div style={{ fontSize: "11px", color: "#f59e0b" }}>
-                          Due: ₹{((b.totalAmount || 0) - (b.advanceAmount || 0)).toLocaleString()}
+                          Due: â‚¹{((b.totalAmount || 0) - (b.advanceAmount || 0)).toLocaleString()}
                         </div>
                       )}
                       {b.paymentType === "later" && (
                         <div style={{ fontSize: "11px", color: "#06b6d4" }}>
-                          Total: ₹{(b.totalAmount || 0).toLocaleString()}
+                          Total: â‚¹{(b.totalAmount || 0).toLocaleString()}
                         </div>
                       )}
                     </td>
@@ -250,7 +250,7 @@ const AllBookings = () => {
   );
 };
 
-/* ─── All Users Tab ─── */
+/* â”€â”€â”€ All Users Tab â”€â”€â”€ */
 const AllUsers = () => {
   const [users, setUsers]   = useState([]);
   const [loading, setLoading] = useState(true);
@@ -289,7 +289,7 @@ const AllUsers = () => {
         <div style={{ textAlign: "center", padding: "40px", color: "var(--text-muted)" }}>Loading...</div>
       ) : users.length === 0 ? (
         <div style={{ textAlign: "center", padding: "60px 0" }}>
-          <div style={{ fontSize: "48px" }}>👤</div>
+          <div style={{ fontSize: "48px" }}>ðŸ‘¤</div>
           <p style={{ color: "var(--text-muted)", marginTop: "12px" }}>No users found</p>
         </div>
       ) : (
@@ -311,7 +311,7 @@ const AllUsers = () => {
                     />
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontWeight: "700", color: "var(--text-primary)", fontSize: "14px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                        {u.name || "—"}
+                        {u.name || "â€”"}
                       </div>
                       <div style={{ fontSize: "11px", color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                         {u.email}
@@ -360,7 +360,7 @@ const AllUsers = () => {
   );
 };
 
-/* ─── Vehicle Form (shared by Add & Edit) ─── */
+/* â”€â”€â”€ Vehicle Form (shared by Add & Edit) â”€â”€â”€ */
 const EMPTY = { name: "", type: "car", pricePerKm: "", image: "", ac: true, seats: "", description: "" };
 
 const VehicleForm = ({ initial = EMPTY, onSave, onCancel, saving, isEdit }) => {
@@ -398,7 +398,7 @@ const VehicleForm = ({ initial = EMPTY, onSave, onCancel, saving, isEdit }) => {
 
         {/* Price */}
         <div className="col-md-4">
-          <label style={labelStyle}>Price (₹/km) *</label>
+          <label style={labelStyle}>Price (â‚¹/km) *</label>
           <input type="number" value={data.pricePerKm} onChange={(e) => set("pricePerKm", e.target.value)}
             placeholder="12" required style={inputStyle}
             onFocus={(e) => (e.target.style.borderColor = "#3b82f6")}
@@ -430,7 +430,7 @@ const VehicleForm = ({ initial = EMPTY, onSave, onCancel, saving, isEdit }) => {
                   transition: "all 0.2s",
                 }}
               >
-                {val ? "❄️ AC" : "🌀 Non-AC"}
+                {val ? "â„ï¸ AC" : "ðŸŒ€ Non-AC"}
               </button>
             ))}
           </div>
@@ -484,7 +484,7 @@ const VehicleForm = ({ initial = EMPTY, onSave, onCancel, saving, isEdit }) => {
   );
 };
 
-/* ─── Manage Vehicles Tab ─── */
+/* â”€â”€â”€ Manage Vehicles Tab â”€â”€â”€ */
 const ManageVehicles = () => {
   const [vehicles, setVehicles]   = useState([]);
   const [loading, setLoading]     = useState(true);
@@ -535,7 +535,7 @@ const ManageVehicles = () => {
     } catch { toast.error("Failed to delete vehicle."); }
   };
 
-  const typeIcon = (t) => t === "car" ? "🚗" : t === "minibus" ? "🚐" : "🚌";
+  const typeIcon = (t) => t === "car" ? "ðŸš—" : t === "minibus" ? "ðŸš" : "ðŸšŒ";
 
   return (
     <div>
@@ -586,7 +586,7 @@ const ManageVehicles = () => {
           {vehicles.map((v) => (
             <div key={v._id} className="col-12 col-lg-6">
               {editingId === v._id ? (
-                /* ── Inline Edit Form ── */
+                /* â”€â”€ Inline Edit Form â”€â”€ */
                 <div style={{
                   background: "var(--bg-card)", border: "2px solid rgba(16,185,129,0.35)",
                   borderRadius: "20px", padding: "22px", boxShadow: "var(--shadow)",
@@ -606,7 +606,7 @@ const ManageVehicles = () => {
                   />
                 </div>
               ) : (
-                /* ── Vehicle Card ── */
+                /* â”€â”€ Vehicle Card â”€â”€ */
                 <div style={{
                   background: "var(--bg-card)", border: "1px solid var(--border-color)",
                   borderRadius: "20px", overflow: "hidden", boxShadow: "var(--shadow)",
@@ -633,7 +633,7 @@ const ManageVehicles = () => {
                             {typeIcon(v.type)} {v.type}
                           </span>
                           <span style={{ background: v.ac !== false ? "rgba(6,182,212,0.1)" : "rgba(100,116,139,0.1)", color: v.ac !== false ? "#06b6d4" : "#64748b", fontSize: "11px", fontWeight: "600", padding: "1px 8px", borderRadius: "20px" }}>
-                            {v.ac !== false ? "❄️ AC" : "🌀 Non-AC"}
+                            {v.ac !== false ? "â„ï¸ AC" : "ðŸŒ€ Non-AC"}
                           </span>
                           {v.seats > 0 && (
                             <span style={{ background: "rgba(139,92,246,0.1)", color: "#8b5cf6", fontSize: "11px", fontWeight: "600", padding: "1px 8px", borderRadius: "20px" }}>
@@ -643,7 +643,7 @@ const ManageVehicles = () => {
                         </div>
                       </div>
                       <div style={{ fontWeight: "800", color: "#3b82f6", fontSize: "16px", flexShrink: 0 }}>
-                        ₹{v.pricePerKm}/km
+                        â‚¹{v.pricePerKm}/km
                       </div>
                     </div>
 
@@ -711,7 +711,7 @@ const ManageVehicles = () => {
   );
 };
 
-/* ══ Main Admin ══ */
+/* â•â• Main Admin â•â• */
 const Admin = () => {
   const [tab, setTab] = useState("bookings");
 
@@ -763,3 +763,4 @@ const Admin = () => {
 };
 
 export default Admin;
+

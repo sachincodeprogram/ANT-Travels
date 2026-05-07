@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+﻿import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-const API = import.meta.env.VITE_API || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API || "https://ant-travels-4c1n.onrender.com/api";
 
 const Booking = () => {
   const { state } = useLocation();
@@ -24,7 +24,7 @@ const Booking = () => {
         order_id: order.id,
 
         handler: function (response) {
-          alert("Payment Successful ✅");
+          alert("Payment Successful âœ…");
           console.log(response);
         },
 
@@ -46,7 +46,7 @@ const Booking = () => {
   return (
     <div className="container mt-5 text-center">
       <h2>{vehicle.name}</h2>
-      <p>₹{vehicle.pricePerKm}/km</p>
+      <p>â‚¹{vehicle.pricePerKm}/km</p>
 
       <button className="btn btn-dark" onClick={handlePayment}>
         Pay Now

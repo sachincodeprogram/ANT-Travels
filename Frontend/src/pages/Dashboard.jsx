@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { auth } from "../firebase/config";
@@ -7,7 +7,7 @@ import { BookingSkeleton } from "../components/Skeleton";
 import { MdLocationOn, MdCalendarToday, MdDirectionsCar } from "react-icons/md";
 import { FiCreditCard, FiPercent } from "react-icons/fi";
 
-const API = import.meta.env.VITE_API || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API || "https://ant-travels-4c1n.onrender.com/api";
 
 const statusColor = (s) =>
   s === "confirmed" ? "#10b981" : s === "pending" ? "#f59e0b" : "#ef4444";
@@ -61,7 +61,7 @@ const BookingCard = ({ b }) => {
                 fontSize: "12px", fontWeight: "600",
                 padding: "4px 12px", borderRadius: "20px", textTransform: "capitalize",
               }}>
-                ✓ {b.status}
+                âœ“ {b.status}
               </span>
             </div>
 
@@ -69,7 +69,7 @@ const BookingCard = ({ b }) => {
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px", flexWrap: "wrap" }}>
               <MdLocationOn size={14} color="#3b82f6" />
               <span style={{ fontWeight: "600", color: "var(--text-primary)", fontSize: "14px" }}>{b.from}</span>
-              <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>→</span>
+              <span style={{ color: "var(--text-muted)", fontSize: "12px" }}>â†’</span>
               <span style={{ fontWeight: "600", color: "var(--text-primary)", fontSize: "14px" }}>{b.to}</span>
             </div>
 
@@ -79,7 +79,7 @@ const BookingCard = ({ b }) => {
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                   <MdCalendarToday size={12} color="var(--text-muted)" />
                   <span style={{ fontSize: "12px", color: "var(--text-muted)" }}>
-                    {b.startDate}{b.endDate ? ` → ${b.endDate}` : ""}
+                    {b.startDate}{b.endDate ? ` â†’ ${b.endDate}` : ""}
                   </span>
                 </div>
               )}
@@ -98,18 +98,18 @@ const BookingCard = ({ b }) => {
                   {b.paymentType === "advance" ? "5% Advance Paid" : "Full Payment"}
                 </span>
                 <span style={{ fontWeight: "700", color: "var(--text-primary)", fontSize: "13px" }}>
-                  ₹{b.advanceAmount?.toLocaleString()}
+                  â‚¹{b.advanceAmount?.toLocaleString()}
                 </span>
               </div>
               {remaining > 0 && (
                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                   <span style={{ fontSize: "12px", color: "#f59e0b" }}>
-                    Due on arrival: ₹{remaining.toLocaleString()}
+                    Due on arrival: â‚¹{remaining.toLocaleString()}
                   </span>
                 </div>
               )}
               <div style={{ marginLeft: "auto", fontSize: "12px", color: "var(--text-muted)" }}>
-                Total est. ₹{b.totalAmount?.toLocaleString()}
+                Total est. â‚¹{b.totalAmount?.toLocaleString()}
               </div>
             </div>
 
@@ -182,7 +182,7 @@ const Dashboard = () => {
 
         {!user ? (
           <div style={{ textAlign: "center", padding: "60px 0" }}>
-            <div style={{ fontSize: "56px" }}>🔐</div>
+            <div style={{ fontSize: "56px" }}>ðŸ”</div>
             <p style={{ color: "var(--text-muted)", fontSize: "16px", marginTop: "12px" }}>
               Please login to view your bookings
             </p>
@@ -193,7 +193,7 @@ const Dashboard = () => {
           bookings.map((b) => <BookingCard key={b._id} b={b} />)
         ) : (
           <div style={{ textAlign: "center", padding: "60px 0" }}>
-            <div style={{ fontSize: "56px" }}>📋</div>
+            <div style={{ fontSize: "56px" }}>ðŸ“‹</div>
             <p style={{ color: "var(--text-muted)", fontSize: "16px", marginTop: "12px" }}>
               No bookings yet
             </p>
@@ -205,3 +205,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

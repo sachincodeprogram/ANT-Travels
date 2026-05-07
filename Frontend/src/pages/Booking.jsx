@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+﻿import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -6,7 +6,7 @@ import { auth } from "../firebase/config";
 import { MdLocationOn, MdCalendarToday, MdDirectionsCar } from "react-icons/md";
 import { FiCreditCard, FiPercent, FiCheck, FiCalendar } from "react-icons/fi";
 
-const API      = import.meta.env.VITE_API         || "http://localhost:5000/api";
+const API      = import.meta.env.VITE_API         || "https://ant-travels-4c1n.onrender.com/api";
 const RZP_KEY  = import.meta.env.VITE_RAZORPAY_KEY || "rzp_test_SlAYzNNJzlvLCY";
 const EST_KM   = 100; // estimated km for price calculation
 
@@ -24,7 +24,7 @@ const Booking = () => {
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center", gap: "16px",
       }}>
-        <div style={{ fontSize: "56px" }}>⚠️</div>
+        <div style={{ fontSize: "56px" }}>âš ï¸</div>
         <h3 style={{ color: "var(--text-primary)" }}>No booking data found</h3>
         <button
           onClick={() => navigate("/")}
@@ -67,7 +67,7 @@ const Booking = () => {
         paymentId:    "",
         status:       "pending",
       });
-      toast.success("Booking confirmed! Pay on arrival 🚗");
+      toast.success("Booking confirmed! Pay on arrival ðŸš—");
       navigate("/dashboard");
     } catch {
       toast.error("Failed to confirm booking. Try again.");
@@ -89,7 +89,7 @@ const Booking = () => {
         amount:      order.amount,
         currency:    "INR",
         name:        "ANT Travels",
-        description: `${vehicle.name} — ${type === "advance" ? "5% Advance" : "Full Payment"}`,
+        description: `${vehicle.name} â€” ${type === "advance" ? "5% Advance" : "Full Payment"}`,
         order_id:    order.id,
         prefill: {
           name:  user?.displayName || "",
@@ -118,7 +118,7 @@ const Booking = () => {
               paymentId:     response.razorpay_payment_id,
               status:        "confirmed",
             });
-            toast.success("Booking confirmed! 🎉");
+            toast.success("Booking confirmed! ðŸŽ‰");
             navigate("/dashboard");
           } catch {
             toast.error("Payment done but booking save failed. Contact support.");
@@ -159,7 +159,7 @@ const Booking = () => {
               padding: "6px 14px", cursor: "pointer", fontSize: "13px", marginBottom: "16px",
             }}
           >
-            ← Back
+            â† Back
           </button>
           <h2 style={{ fontWeight: "800", color: "var(--text-primary)", margin: 0 }}>Confirm Booking</h2>
           <p style={{ color: "var(--text-muted)", margin: "4px 0 0" }}>Review details and choose payment</p>
@@ -167,7 +167,7 @@ const Booking = () => {
 
         <div className="row g-4">
 
-          {/* ── Left: Details ── */}
+          {/* â”€â”€ Left: Details â”€â”€ */}
           <div className="col-lg-7">
 
             {/* Vehicle Card */}
@@ -197,7 +197,7 @@ const Booking = () => {
                   </span>
                 </div>
                 <p style={{ color: "var(--text-muted)", margin: 0, fontSize: "13px" }}>
-                  AC • Comfortable • Professional Driver
+                  AC â€¢ Comfortable â€¢ Professional Driver
                 </p>
               </div>
             </div>
@@ -255,7 +255,7 @@ const Booking = () => {
             </div>
           </div>
 
-          {/* ── Right: Price + Payment ── */}
+          {/* â”€â”€ Right: Price + Payment â”€â”€ */}
           <div className="col-lg-5">
             <div style={{
               background: "var(--bg-card)", border: "1px solid var(--border-color)",
@@ -266,17 +266,17 @@ const Booking = () => {
                 Price Breakdown
               </h6>
 
-              {row("Rate", `₹${vehicle.pricePerKm}/km`)}
+              {row("Rate", `â‚¹${vehicle.pricePerKm}/km`)}
               {row("Est. Distance", `~${EST_KM} km`)}
-              {row("Est. Total", `₹${totalAmount.toLocaleString()}`)}
-              {row("5% Advance", `₹${advanceAmount.toLocaleString()}`)}
+              {row("Est. Total", `â‚¹${totalAmount.toLocaleString()}`)}
+              {row("5% Advance", `â‚¹${advanceAmount.toLocaleString()}`)}
 
               <p style={{
                 fontSize: "11px", color: "var(--text-muted)", margin: "12px 0 20px",
                 background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.2)",
                 borderRadius: "8px", padding: "8px 10px",
               }}>
-                ⚠️ Final price will be calculated based on actual distance travelled.
+                âš ï¸ Final price will be calculated based on actual distance travelled.
               </p>
 
               {/* Payment Options */}
@@ -306,10 +306,10 @@ const Booking = () => {
                 </div>
                 <div style={{ textAlign: "left" }}>
                   <div style={{ fontWeight: "700", fontSize: "14px" }}>
-                    Pay 5% Advance — ₹{advanceAmount.toLocaleString()}
+                    Pay 5% Advance â€” â‚¹{advanceAmount.toLocaleString()}
                   </div>
                   <div style={{ fontSize: "11px", opacity: 0.85 }}>
-                    Rest ₹{(totalAmount - advanceAmount).toLocaleString()} on arrival
+                    Rest â‚¹{(totalAmount - advanceAmount).toLocaleString()} on arrival
                   </div>
                 </div>
               </button>
@@ -341,7 +341,7 @@ const Booking = () => {
                 </div>
                 <div style={{ textAlign: "left" }}>
                   <div style={{ fontWeight: "700", fontSize: "14px" }}>
-                    Full Payment — ₹{totalAmount.toLocaleString()}
+                    Full Payment â€” â‚¹{totalAmount.toLocaleString()}
                   </div>
                   <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>
                     Pay complete amount now
@@ -386,7 +386,7 @@ const Booking = () => {
                     Confirm Now, Pay Later
                   </div>
                   <div style={{ fontSize: "11px", opacity: 0.8 }}>
-                    No payment needed — pay full amount on arrival
+                    No payment needed â€” pay full amount on arrival
                   </div>
                 </div>
               </button>
@@ -409,3 +409,4 @@ const Booking = () => {
 };
 
 export default Booking;
+

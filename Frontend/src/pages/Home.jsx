@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+﻿import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -8,7 +8,7 @@ import { CardSkeleton } from "../components/Skeleton";
 import { MdLocationOn, MdCalendarToday, MdSearch } from "react-icons/md";
 import { FiShield, FiStar, FiClock, FiThumbsUp, FiAlertCircle } from "react-icons/fi";
 
-const API = import.meta.env.VITE_API || "http://localhost:5000/api";
+const API = import.meta.env.VITE_API || "https://ant-travels-4c1n.onrender.com/api";
 const norm = (t) => t?.toLowerCase().trim().replace(/\s+/g, "");
 
 const SERVICE_CITIES = [
@@ -24,7 +24,7 @@ const SERVICE_CITIES = [
   "Mumbai",
 ];
 
-/* ─── Reusable select style ─── */
+/* â”€â”€â”€ Reusable select style â”€â”€â”€ */
 const selectStyle = (isDark) => ({
   width: "100%",
   padding: "10px 12px 10px 34px",
@@ -38,7 +38,7 @@ const selectStyle = (isDark) => ({
   cursor: "pointer",
 });
 
-/* ─── Vehicle Card ─── */
+/* â”€â”€â”€ Vehicle Card â”€â”€â”€ */
 const VehicleCard = ({ v, navigate }) => (
   <div className="col-6 col-md-4 col-lg-3 d-flex">
     <div
@@ -88,11 +88,11 @@ const VehicleCard = ({ v, navigate }) => (
           {v.name}
         </h6>
         <p style={{ fontSize: "11px", color: "var(--text-muted)", margin: "0 0 10px" }}>
-          AC • Comfortable Ride
+          AC â€¢ Comfortable Ride
         </p>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <span style={{ fontSize: "17px", fontWeight: "800", color: "#3b82f6" }}>₹{v.pricePerKm}</span>
+            <span style={{ fontSize: "17px", fontWeight: "800", color: "#3b82f6" }}>â‚¹{v.pricePerKm}</span>
             <span style={{ fontSize: "11px", color: "var(--text-muted)" }}>/km</span>
           </div>
           <span style={{
@@ -108,7 +108,7 @@ const VehicleCard = ({ v, navigate }) => (
   </div>
 );
 
-/* ─── Section ─── */
+/* â”€â”€â”€ Section â”€â”€â”€ */
 const Section = ({ icon, label, data, loading, navigate }) => {
   if (!loading && data.length === 0) return null;
   return (
@@ -143,7 +143,7 @@ const Section = ({ icon, label, data, loading, navigate }) => {
           onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(59,130,246,0.08)"; e.currentTarget.style.borderColor = "#3b82f6"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--border-color)"; }}
         >
-          View All →
+          View All â†’
         </button>
       </div>
       {loading ? (
@@ -159,7 +159,7 @@ const Section = ({ icon, label, data, loading, navigate }) => {
   );
 };
 
-/* ─── Feature Card ─── */
+/* â”€â”€â”€ Feature Card â”€â”€â”€ */
 const Feature = ({ icon, title, desc }) => (
   <div className="col-6 col-md-3">
     <div style={{
@@ -183,7 +183,7 @@ const Feature = ({ icon, title, desc }) => (
   </div>
 );
 
-/* ══════════════════ MAIN ══════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• MAIN â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const Home = () => {
   const navigate = useNavigate();
   const { isDark } = useTheme();
@@ -232,7 +232,7 @@ const Home = () => {
     }
     setNoService(false);
     setJourney({ from, to, startDate, endDate });
-    toast.success(`Journey saved! Now book your vehicle 🚗`);
+    toast.success(`Journey saved! Now book your vehicle ðŸš—`);
     navigate("/vehicles");
   };
 
@@ -244,7 +244,7 @@ const Home = () => {
   return (
     <div style={{ background: "var(--bg-primary)", minHeight: "100vh" }}>
 
-      {/* ══ HERO ══ */}
+      {/* â•â• HERO â•â• */}
       <div style={{ position: "relative" }}>
         {/* Carousel */}
         <div id="travelCarousel" className="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
@@ -267,7 +267,7 @@ const Home = () => {
           </button>
         </div>
 
-        {/* Overlay text — sits on top of carousel */}
+        {/* Overlay text â€” sits on top of carousel */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom, rgba(6,8,20,0.38) 0%, rgba(6,8,20,0.65) 55%, rgba(6,8,20,0.88) 100%)",
@@ -298,12 +298,12 @@ const Home = () => {
             </span>
           </h1>
           <p style={{ color: "#94a3b8", fontSize: "clamp(13px, 1.8vw, 16px)", maxWidth: "440px", margin: 0 }}>
-            Cars, Mini Buses & Buses — safe, affordable, on-time across India.
+            Cars, Mini Buses & Buses â€” safe, affordable, on-time across India.
           </p>
         </div>
       </div>
 
-      {/* ══ SEARCH CARD ══ */}
+      {/* â•â• SEARCH CARD â•â• */}
       <div className="container" style={{ marginTop: "-32px", position: "relative", zIndex: 10 }}>
         <div style={{
           background: "var(--bg-card)",
@@ -428,7 +428,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* ── Service Not Available Message ── */}
+          {/* â”€â”€ Service Not Available Message â”€â”€ */}
           {noService && (
             <div style={{
               marginTop: "16px",
@@ -468,13 +468,13 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ══ STATS ══ */}
+      {/* â•â• STATS â•â• */}
       <div className="container" style={{ padding: "36px 0 40px" }}>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "36px" }}>
           {[
             { value: "500+", label: "Vehicles" },
             { value: "10K+", label: "Happy Trips" },
-            { value: "4.8★", label: "Avg Rating" },
+            { value: "4.8â˜…", label: "Avg Rating" },
             { value: "24/7", label: "Support" },
           ].map(({ value, label }) => (
             <div key={label} style={{ textAlign: "center", minWidth: "70px" }}>
@@ -489,14 +489,14 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ══ VEHICLE SECTIONS ══ */}
+      {/* â•â• VEHICLE SECTIONS â•â• */}
       <div className="container" style={{ paddingBottom: "60px" }}>
-        <Section icon="🚗" label="Cars"     data={cars}      loading={loading} navigate={navigate} />
-        <Section icon="🚐" label="Mini Bus" data={minibuses} loading={loading} navigate={navigate} />
-        <Section icon="🚌" label="Bus"      data={buses}     loading={loading} navigate={navigate} />
+        <Section icon="ðŸš—" label="Cars"     data={cars}      loading={loading} navigate={navigate} />
+        <Section icon="ðŸš" label="Mini Bus" data={minibuses} loading={loading} navigate={navigate} />
+        <Section icon="ðŸšŒ" label="Bus"      data={buses}     loading={loading} navigate={navigate} />
       </div>
 
-      {/* ══ WHY CHOOSE US ══ */}
+      {/* â•â• WHY CHOOSE US â•â• */}
       <div style={{ background: "var(--bg-card)", borderTop: "1px solid var(--border-color)", padding: "60px 0" }}>
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
@@ -516,7 +516,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ══ FOOTER CTA ══ */}
+      {/* â•â• FOOTER CTA â•â• */}
       <div style={{
         background: "linear-gradient(135deg, #0f172a, #1e3a5f)",
         padding: "60px 20px", textAlign: "center",
@@ -536,7 +536,7 @@ const Home = () => {
             cursor: "pointer", boxShadow: "0 8px 28px rgba(59,130,246,0.4)",
           }}
         >
-          Browse All Vehicles →
+          Browse All Vehicles â†’
         </button>
       </div>
 
@@ -545,3 +545,4 @@ const Home = () => {
 };
 
 export default Home;
+

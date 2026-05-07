@@ -1,6 +1,6 @@
-import axios from "axios";
+﻿import axios from "axios";
 
-const API     = import.meta.env.VITE_API          || "http://localhost:5000/api";
+const API     = import.meta.env.VITE_API          || "https://ant-travels-4c1n.onrender.com/api";
 const RZP_KEY = import.meta.env.VITE_RAZORPAY_KEY || "rzp_test_SlAYzNNJzlvLCY";
 
 const Payment = ({ amount, onSuccess }) => {
@@ -23,15 +23,16 @@ const Payment = ({ amount, onSuccess }) => {
       new window.Razorpay(options).open();
     } catch (err) {
       console.error(err);
-      alert("Payment Failed ❌");
+      alert("Payment Failed âŒ");
     }
   };
 
   return (
     <button className="btn btn-warning mt-3" onClick={handlePayment}>
-      Pay ₹{amount}
+      Pay â‚¹{amount}
     </button>
   );
 };
 
 export default Payment;
+
