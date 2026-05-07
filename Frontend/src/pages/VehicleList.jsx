@@ -100,7 +100,7 @@ const VehicleCard = ({ v, onDetailsClick, onBookClick }) => {
               borderRadius: 12, padding: "6px 12px",
               border: "1px solid rgba(255,255,255,0.15)",
             }}>
-              <span style={{ color: "#fff", fontWeight: 900, fontSize: 18 }}>&#8377;{v.pricePerKm}</span>
+              <span style={{ color: "#fff", fontWeight: 900, fontSize: 18 }}>₹{v.pricePerKm}</span>
               <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 11 }}>/km</span>
             </div>
           </div>
@@ -196,31 +196,25 @@ const VehicleCard = ({ v, onDetailsClick, onBookClick }) => {
 };
 
 /* ─── Section ─── */
-const Section = ({ icon, label, data, loading, onBookClick, onDetailsClick }) => {
+const Section = ({ label, data, loading, onBookClick, onDetailsClick }) => {
   if (!loading && data.length === 0) return null;
   return (
     <div style={{ marginBottom: 52 }}>
       {/* Section header */}
-      <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: 14, fontSize: 24,
-          background: "linear-gradient(135deg, rgba(59,130,246,0.15), rgba(6,182,212,0.08))",
-          border: "1px solid rgba(59,130,246,0.2)",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
-          {icon}
-        </div>
-        <div>
-          <h5 style={{ margin: 0, fontWeight: 800, color: "var(--text-primary)", fontSize: 20 }}>
-            {label}
-          </h5>
-          {!loading && (
-            <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
-              {data.length} vehicle{data.length !== 1 ? "s" : ""} available
-            </span>
-          )}
-        </div>
-        <div style={{ flex: 1, height: 1, background: "var(--border-color)", marginLeft: 8 }} />
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+        <h5 style={{ margin: 0, fontWeight: 800, color: "var(--text-primary)", fontSize: 20 }}>
+          {label}
+        </h5>
+        {!loading && (
+          <span style={{
+            fontSize: 11, color: "var(--text-muted)",
+            background: "var(--bg-card)", border: "1px solid var(--border-color)",
+            padding: "2px 10px", borderRadius: 20, fontWeight: 600,
+          }}>
+            {data.length} available
+          </span>
+        )}
+        <div style={{ flex: 1, height: 1, background: "var(--border-color)" }} />
       </div>
 
       {loading ? (
@@ -278,10 +272,10 @@ const VehicleList = () => {
   };
 
   const tabs = [
-    { key: "all",     label: "All",     icon: "🚘" },
-    { key: "car",     label: "Cars",    icon: "🚗" },
-    { key: "minibus", label: "Mini Bus", icon: "🚐" },
-    { key: "bus",     label: "Bus",     icon: "🚌" },
+    { key: "all",     label: "All Vehicles" },
+    { key: "car",     label: "Cars" },
+    { key: "minibus", label: "Mini Bus" },
+    { key: "bus",     label: "Bus" },
   ];
 
   const cars      = vehicles.filter((v) => norm(v.type) === "car");
@@ -289,9 +283,9 @@ const VehicleList = () => {
   const buses     = vehicles.filter((v) => norm(v.type) === "bus");
 
   const allSections = [
-    { key: "car",     icon: "🚗", label: "Cars",     data: cars },
-    { key: "minibus", icon: "🚐", label: "Mini Bus",  data: minibuses },
-    { key: "bus",     icon: "🚌", label: "Buses",     data: buses },
+    { key: "car",     label: "Cars",     data: cars },
+    { key: "minibus", label: "Mini Bus",  data: minibuses },
+    { key: "bus",     label: "Buses",     data: buses },
   ];
   const visibleSections = activeTab === "all"
     ? allSections
@@ -327,12 +321,6 @@ const VehicleList = () => {
           pointerEvents: "none",
         }} />
 
-        <p style={{
-          color: "#3b82f6", fontWeight: 700, fontSize: 12,
-          letterSpacing: 4, textTransform: "uppercase", marginBottom: 12,
-        }}>
-          Our Fleet
-        </p>
         <h1 style={{
           color: "#fff", fontWeight: 900,
           fontSize: "clamp(28px, 5vw, 42px)",
@@ -358,7 +346,7 @@ const VehicleList = () => {
           }}>
             <MdLocationOn color="#10b981" size={18} />
             <span style={{ fontWeight: 700, color: "var(--text-primary)", fontSize: 14 }}>{journey.from}</span>
-            <span style={{ color: "var(--text-muted)", fontSize: 16 }}>&#8594;</span>
+            <span style={{ color: "var(--text-muted)", fontSize: 16 }}>→</span>
             <span style={{ fontWeight: 700, color: "var(--text-primary)", fontSize: 14 }}>{journey.to}</span>
             {journey.startDate && (
               <span style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12, color: "var(--text-muted)" }}>
@@ -417,7 +405,7 @@ const VehicleList = () => {
                 fontFamily: "Poppins, sans-serif",
               }}
             >
-              {tab.icon} {tab.label}
+              {tab.label}
             </button>
           ))}
         </div>
@@ -426,7 +414,6 @@ const VehicleList = () => {
         {visibleSections.map((s) => (
           <Section
             key={s.key}
-            icon={s.icon}
             label={s.label}
             data={s.data}
             loading={loading}
